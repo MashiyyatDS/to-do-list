@@ -29,7 +29,7 @@
       <ul class="side-nav" id="mobile-demo">
         <li><a href="{{ route('todo') }}">Todos</a></li>
         @auth
-          <li><a href="collapsible.html">Logout</a></li>
+          <li><a onclick="$('#logout-form').submit()">Logout</a></li>
         @endauth
         @guest
           <li><a href="{{ route('login') }}">Login</a></li>
