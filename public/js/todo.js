@@ -47,7 +47,7 @@ $(document).ready(function() {
   });
 	$.ajax({
 		type:'get',
-		url:`http://localhost:8000/todo/json?page=${pageNumber}`
+		url:`${url}/todo/json?page=${pageNumber}`
 	}).done(res => {
 		swal.close()
 		pageNumber = pageNumber + 1;
@@ -72,7 +72,7 @@ $(document).ready(function() {
 	  });
 		$.ajax({
 			type:'get',
-			url:`http://localhost:8000/todo/json?page=${pageNumber}`
+			url:`${url}/todo/json?page=${pageNumber}`
 		}).done(res => {
 			if (res.todos.data.length == 0) {
 				Materialize.toast("All todos are loaded",2000);
@@ -103,7 +103,7 @@ function editTodo(id) {
   });
 	$.ajax({
 		type:'get',
-		url:`http://localhost:8000/todo/find/${id}`
+		url:`${url}/todo/find/${id}`
 	}).done(res => {
 		console.log(res);
 		swal({
@@ -124,7 +124,7 @@ function editTodo(id) {
 			  });
 				$.ajax({
 					type:'post',
-					url:`http://localhost:8000/todo/update/${id}`,
+					url:`${url}/todo/update/${id}`,
 					data: {
 						todo:value,
 						_token:$('input[name=_token]').val()
@@ -164,7 +164,7 @@ function addTodo() {
 		  });
 			$.ajax({
 				type:'post',
-				url:`http://localhost:8000/todo/create`,
+				url:`${url}/todo/create`,
 				data: {
 					todo: value,
 					_token:$('input[name=_token]').val()
@@ -192,7 +192,7 @@ function deleteTodo(id) {
   	if(willDelete) {
 	  	$.ajax({
 				type:'delete',
-				url:`http://localhost:8000/todo/delete/${id}`,
+				url:`${url}/todo/delete/${id}`,
 				data: {
 					_token:$('input[name=_token]').val()
 				}
@@ -210,7 +210,7 @@ function deleteTodo(id) {
 function markTodo(id) {
 	$.ajax({
 		type:'post',
-		url:`http://localhost:8000/todo/mark-complete/${id}`,
+		url:`${url}/todo/mark-complete/${id}`,
 		data: {
 			_token:$('input[name=_token]').val()
 		}
