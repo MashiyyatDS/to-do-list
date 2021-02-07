@@ -12,7 +12,7 @@ class PagesController extends Controller
     if(auth()->user()) {
       return redirect()->route('todo');
     }else {
-      return view('pages.index');
+      return redirect()->route('login');;
     }
   }
 

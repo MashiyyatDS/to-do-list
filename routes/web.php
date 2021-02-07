@@ -9,9 +9,9 @@ Route::get('/', [PagesController::class, 'index'])->name('index');
 Route::get('/todo',[PagesController::class, 'todo'])->name('todo')->middleware('auth');
 
 Route::prefix('/user')->group(function() {
-	Route::get('/register', [RegisterController::class, 'index'])->name('register');
+	Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 	Route::post('/register', [RegisterController::class, 'create'])->name('register-user');
-	Route::get('/login', [LoginController::class, 'index'])->name('login');
+	Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 	Route::post('/login',[LoginController::class, 'create'])->name('login-user');
 	Route::post('/logout',[LoginController::class, 'logout'])->name('logout-user');
 });
